@@ -6,6 +6,7 @@ let errorArrays = []
 let x = [], xbool = false
 let zero = [], zerobool = false
 let div = []
+let permission = true
 
 for (let key in game.childNodes) {
     if (key % 2)
@@ -72,6 +73,7 @@ class Tictac {
         if (bool) return
 
         if (errorArrays.includes(+data.dataset.cellIndex)) {
+            permission = false
             return alert("Boshqasini bosing")
         }
 
@@ -87,6 +89,7 @@ class Tictac {
                 alert("Player X has won")
             }, 100)
         }
+        permission = true
     }
 }
 
@@ -96,6 +99,7 @@ let tictac = new Tictac()
 game.onclick = e => {
 
     tictac.user(e.target, xbool)
+    // console.log(tictac.user(e.target, xbool));
 
     if (errorArrays.length == 9 && !zerobool && !xbool) {
         setTimeout(() => {
@@ -105,7 +109,7 @@ game.onclick = e => {
         }, 100)
     }
 
-    tictac.robot(zerobool)
+   if(permission) tictac.robot(zerobool)
     
 }
 
