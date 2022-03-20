@@ -99,12 +99,11 @@ let tictac = new Tictac()
 game.onclick = e => {
 
     tictac.user(e.target, xbool)
-    // console.log(tictac.user(e.target, xbool));
-
     if (errorArrays.length == 9 && !zerobool && !xbool) {
         setTimeout(() => {
             game.innerHTML = null
             statusH2.textContent = "Draw"
+            permission = false
             alert("Draw")
         }, 100)
     }
