@@ -100,10 +100,11 @@ game.onclick = e => {
 
     tictac.user(e.target, xbool)
     if (errorArrays.length == 9 && !zerobool && !xbool) {
+        permission = false
         setTimeout(() => {
             game.innerHTML = null
             statusH2.textContent = "Draw"
-            permission = false
+            
             alert("Draw")
         }, 100)
     }
